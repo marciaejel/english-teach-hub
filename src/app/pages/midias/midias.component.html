@@ -1,0 +1,26 @@
+<section class="midias-section" aria-labelledby="midias">
+  <h1 id="midias">🎵 Músicas e Vídeos para Aula</h1>
+
+  <p class="midias-title">
+    Explorar músicas e vídeos ajuda a dinamizar suas aulas de inglês,
+    tornando a aprendizagem mais envolvente e divertida.
+  </p>
+
+  <div *ngIf="!temaSelecionado()" class="temas-grid">
+    <button *ngFor="let tema of temas" class="tema-card" (click)="selecionarTema(tema)">
+      {{ tema }}
+    </button>
+  </div>
+
+  <div *ngIf="temaSelecionado()" class="videos-grid">
+    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
+
+    <h3>{{ temaSelecionado() }}</h3>
+
+    <div *ngFor="let video of videosFiltrados" class="video-card">
+      <iframe [src]="video.url | safe" title="{{ video.titulo }}" frameborder="0" allowfullscreen></iframe>
+      <h4>{{ video.titulo }}</h4>
+      <p>{{ video.descricao }}</p>
+    </div>
+  </div>
+</section>

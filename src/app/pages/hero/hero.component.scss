@@ -1,0 +1,59 @@
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  background-color: #f3f0ff;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.hero-img {
+  width: 80%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #4f46e5;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  color: #6b21a8;
+  margin-bottom: 1rem;
+}
+
+.hero-quote {
+  font-style: italic;
+  color: #3f3f46;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.btn-primary {
+  background-color: #7c3aed;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+

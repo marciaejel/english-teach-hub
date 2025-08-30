@@ -1,0 +1,49 @@
+<section class="aulas-section" aria-labelledby="aulas">
+  <header class="aulas-header">
+    <h1 class="section-title">📚 Aulas</h1>
+    <p class="section-subtitle">Planejar uma boa aula faz muita diferença na vida do professor que deseja o melhor resultado para o seu aluno</p>
+  </header>
+
+  <div class="filter-bar">
+    <label for="serie">Filtrar por série:</label>
+    <select id="serie" [(ngModel)]="serieSelecionada" (change)="filtrarAulas()">
+      <option value="">Todas</option>
+      <option *ngFor="let serie of series" [value]="serie">{{ serie }}</option>
+    </select>
+  </div>
+
+  <div class="cards-wrapper">
+    <div class="cards-grid" [@cardAnim]>
+      <div *ngFor="let bloco of aulasFiltradas" class="card">
+        <h3 class="serie-title">{{ bloco.serie }}</h3>
+
+        <div class="habilidades">
+          <div *ngFor="let hab of bloco.habilidades" class="habilidade-card">
+            <h4 (click)="toggleHabilidade(hab)" [class.expanded]="isExpanded(hab)">
+              {{ hab.code }}
+            </h4>
+            <p *ngIf="isExpanded(hab)">{{ hab.desc }}</p>
+
+            <details *ngIf="isExpanded(hab) && hab.atividades.length">
+              <summary>Atividades</summary>
+              <ul>
+                <li *ngFor="let act of hab.atividades">{{ act }}</li>
+              </ul>
+            </details>
+
+            <div *ngIf="isExpanded(hab) && hab.exercicios?.length">
+              <h5>Exercícios</h5>
+              <ul>
+                <li *ngFor="let ex of hab.exercicios">
+                  <a [href]="ex.downloadUrl" target="_blank" rel="noopener noreferrer">
+                    {{ ex.title }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
