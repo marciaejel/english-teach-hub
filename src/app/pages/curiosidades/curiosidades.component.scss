@@ -1,0 +1,32 @@
+.curiosidades {
+  background-color: #ede9fe;
+  padding: 2.5rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  align-items: center;
+  text-align: center;
+  max-width: 1300px;
+  
+
+  font-size: 1.5rem;
+
+  h2 { color: #7c3aed; margin-bottom: 1rem; text-align: center; }
+  
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+
+    li { margin-bottom: 0.5rem; font-size: 2.05rem; }
+  }
+
+  .btn-primary {
+      background-color: #7c3aed;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      &:hover { background-color: #5b21b6; }
+    }
+}

@@ -1,0 +1,32 @@
+<section class="tradutor-section">
+  <!-- Título -->
+  <h1>Tradutor de Inglês</h1>
+
+  <!-- Seção Mock -->
+  <div class="mock-section">
+    <h2>Palavras Sugeridas</h2>
+    <div class="palavras-buttons">
+      <button *ngFor="let palavra of palavrasMock" (click)="traduzirMock(palavra)">
+        {{ palavra }}
+      </button>
+    </div>
+    <div *ngIf="traducaoMock()">
+      <p class="traducao-mock">{{ traducaoMock() }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Seção API -->
+  <div class="api-section">
+    <h2>Buscar Outra Palavra</h2>
+    <div class="api-input">
+      <input type="text" [(ngModel)]="texto" placeholder="Digite a palavra em inglês..." />
+      <button (click)="traduzirAPI()" [disabled]="carregandoAPI()">Traduzir</button>
+    </div>
+    <div *ngIf="carregandoAPI()" class="loading">Buscando...</div>
+    <div *ngIf="traducaoAPI()" class="traducao-api">
+      {{ traducaoAPI() }}
+    </div>
+  </div>
+</section>

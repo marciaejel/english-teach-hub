@@ -1,0 +1,22 @@
+<section class="flashcards-section" aria-labelledby="flashcards">
+  <h2 id="flashcards">🎴 Flashcards para Professores</h2>
+  <p>
+    Os flashcards são ferramentas eficazes para reforçar a aprendizagem, 
+    promovendo a memorização ativa e a revisão rápida em sala de aula. 
+    Aqui você encontra recursos prontos para usar com seus alunos.
+  </p>
+
+  <div class="resources-grid">
+    <a 
+      *ngFor="let resource of resources" 
+      [href]="resource.url" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="resource-card"
+    >
+      <div class="icon">{{ resource.icon }}</div>
+      <h3>{{ resource.title }}</h3>
+      <p>{{ resource.description }}</p>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section class="curiosidades">
+  <h2>💡 Curiosidades</h2>
+  <p>
+    🧠 Curiosidades funcionam como gatilhos de memória. 
+    Um fato interessante pode ajudar o aluno a lembrar de um conceito mais complexo, associando o conteúdo a algo divertido ou inesperado.
+  </p>
+
+  <section>
+    <p>Você sabia?</p>
+
+    <button class="btn-primary" (click)="showMore()">Curiosidades</button>
+    <p *ngIf="curiosidadeAtual()">{{ curiosidadeAtual() }}</p>
+
+  </section>
+
+  <section>
+    <p>Que tal conhecer mais curiosidades e levar para seus alunos?</p>
+    <button class="btn-primary" (click)="abrirModal()">Clique aqui</button>
+  </section>
+
+  <app-curiosidades-modal
+    *ngIf="modalAberto()"
+    [items]="curiosidades"
+    (close)="fecharModal()">
+  </app-curiosidades-modal>
+</section>

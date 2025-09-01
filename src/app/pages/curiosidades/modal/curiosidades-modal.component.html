@@ -1,0 +1,9 @@
+<div class="modal-backdrop" [class.fechar]="fechando" (click)="fecharModal()">
+  <div class="modal-content" [class.fechar]="fechando" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="fecharModal()">X</button>
+    <h3>Todas as curiosidades</h3>
+    <ul>
+      <li *ngFor="let c of items">{{ c }}</li>
+    </ul>
+  </div>
+</div>
