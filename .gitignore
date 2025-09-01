@@ -1,0 +1,27 @@
+# Dependências
+node_modules/
+
+# Builds e cache
+dist/
+.angular/
+out-tsc/
+tmp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Variáveis de ambiente
+.env
+.env.*.local
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema
+.DS_Store
+Thumbs.db
