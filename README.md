@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # EnglishTeachHub
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
@@ -30,3 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # english-teach-hub
 Plataforma educacional para ensino de Inglês
 >>>>>>> 89566a48279dc2de9631055bb02bf001abbad47e
+=======
+# english-teach-hub
+Plataforma educacional para ensino de Inglês
+>>>>>>> 10187a2d50ee89c3f40a41175486596201872ed5
