@@ -1,29 +1,56 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# EnglishTeachHub
+# 🎓 EnglishTeachHub
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Plataforma educacional desenvolvida em **Angular 17**, voltada para professores de inglês que buscam recursos didáticos interativos, como **aulas organizadas por série**, **exercícios**, **flashcards**, **planos de aula**, além de **músicas**, **vídeos integrados** e **dicionário online** para tornar as aulas mais dinâmicas e interativas.
+O projeto tem como propósito **inovar na prática docente**, unindo tecnologia e educação.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologias utilizadas
 
-## Code scaffolding
+* **Angular 17** (standalone components, signals, RxJS)
+* **TypeScript**
+* **HTML5 & SCSS** (CSS moderno e responsivo)
+* **Git & GitHub** para versionamento
+* **Boas práticas de UX/UI**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 📌 Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* 📚 **Aulas por série** (do 6º ano ao Ensino Médio)
+* ✏️ **Exercícios interativos**
+* 🎴 **Flashcards** para vocabulário
+* 📖 **Planos de aula prontos para aplicação**
+* 🎵 **Seção de música** para tornar as aulas mais dinâmicas
+* 🎥 **Vídeos integrados** com conteúdo específico para cada aula
+* 🌐 **Dicionário integrado via API** para buscar significados em tempo real
+* 🌍 **Design responsivo** para uso em diferentes dispositivos
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🖥️ Como rodar o projeto
 
-## Running end-to-end tests
+```bash
+# Clone este repositório
+git clone https://github.com/marciaejel/EnglishTeachHub.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Acesse a pasta do projeto
+cd EnglishTeachHub
 
-## Further help
+# Instale as dependências
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Inicie o servidor de desenvolvimento
+ng serve
+```
+
+Abra [http://localhost:4200](http://localhost:4200) no navegador para visualizar a aplicação.
+
+> ⚠️ Certifique-se de usar **Node.js >= 18** e **npm >= 9** para evitar problemas de compatibilidade.
+
+---
+
+## 📌 Contatos
+
+* GitHub: [https://github.com/marciaejel](https://github.com/marciaejel)
+* LinkedIn: [https://www.linkedin.com/in/marcia-macedo-b6ab18205/](https://www.linkedin.com/in/marcia-macedo-b6ab18205/)
