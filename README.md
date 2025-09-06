@@ -18,10 +18,8 @@ O projeto tem como propósito **inovar na prática docente**, unindo tecnologia 
 ## 📌 Funcionalidades
 
 * 📚 **Aulas por série** (do 6º ano ao Ensino Médio)
-* ✏️ **Exercícios interativos**
 * 🎴 **Flashcards** para vocabulário
 * 📖 **Planos de aula prontos para aplicação**
-* 🎵 **Seção de música** para tornar as aulas mais dinâmicas
 * 🎥 **Vídeos integrados** com conteúdo específico para cada aula
 * 🌐 **Dicionário integrado via API** para buscar significados em tempo real
 * 🌍 **Design responsivo** para uso em diferentes dispositivos
