@@ -1,54 +1,68 @@
-.tradutor-section {
+.tradutor {
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem;
   text-align: center;
 
-  h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #4f46e5; }
+  &__heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #4f46e5;
+  }
 
-  .mock-section, .api-section {
+  &__mock,
+  &__api {
     margin-bottom: 2rem;
 
-    h2 { font-size: 1.8rem; margin-bottom: 1rem; color: #6b21a8; }
-
-    .palavras-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      justify-content: center;
-
-      button {
-        background-color: #7c3aed;
-        color: #fff;
-        border: none;
-        padding: 0.6rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: transform 0.2s, background-color 0.2s;
-
-        &:hover {
-          background-color: #5b21b6;
-          transform: scale(1.05);
-        }
-      }
-    }
-
-    .traducao-mock {
-      margin-top: 1rem;
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #1e3a8a;
-      transition: all 0.3s ease;
+    &-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #6b21a8;
     }
   }
 
-  .api-input {
+  &__palavras-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+
+    .tradutor__palavra-button {
+      background-color: #7c3aed;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s, background-color 0.2s;
+
+      &:hover {
+        background-color: #5b21b6;
+        transform: scale(1.05);
+      }
+
+      &:focus {
+        outline: 2px solid #5b21b6;
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  &__mock-traducao {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #1e3a8a;
+    transition: all 0.3s ease;
+  }
+
+  &__api-input {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
 
-    input {
+    .tradutor__input {
       padding: 0.6rem;
       font-size: 1rem;
       border-radius: 6px;
@@ -56,7 +70,7 @@
       width: 250px;
     }
 
-    button {
+    .tradutor__api-button {
       padding: 0.6rem 1rem;
       font-size: 1rem;
       border-radius: 6px;
@@ -66,17 +80,38 @@
       cursor: pointer;
       transition: background-color 0.2s;
 
-      &:hover { background-color: #5b21b6; }
-      &:disabled { background-color: #a78bfa; cursor: not-allowed; }
+      &:hover:enabled {
+        background-color: #5b21b6;
+      }
+
+      &:disabled {
+        background-color: #a78bfa;
+        cursor: not-allowed;
+      }
+
+      &:focus {
+        outline: 2px solid #5b21b6;
+        outline-offset: 2px;
+      }
     }
   }
 
-  .loading { margin-top: 1rem; font-style: italic; color: #6b21a8; }
-  .traducao-api {
+  &__loading {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #6b21a8;
+  }
+
+  &__api-traducao {
     margin-top: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: #1e40af;
     transition: all 0.3s ease;
+  }
+
+  &__divider {
+    margin: 2rem 0;
+    border: 1px solid #ddd;
   }
 }

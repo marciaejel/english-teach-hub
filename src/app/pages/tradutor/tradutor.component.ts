@@ -43,7 +43,7 @@ export class TradutorComponent {
           this.carregandoAPI.set(false);
         },
         error: () => {
-          this.traducaoAPI.set('Palavra não encontrada na API');
+          this.traducaoAPI.set('Não foi possível obter a tradução.');
           this.carregandoAPI.set(false);
         }
       });

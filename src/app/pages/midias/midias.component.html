@@ -1,26 +1,26 @@
-<section class="midias-section" aria-labelledby="midias">
-  <h1 id="midias">🎵 Músicas e Vídeos para Aula</h1>
+<section class="midias" aria-labelledby="midias">
+  <h1 id="midias" class="midias__heading">🎵 Músicas e Vídeos para Aula</h1>
 
-  <p class="midias-title">
+  <p class="midias__description">
     Explorar músicas e vídeos ajuda a dinamizar suas aulas de inglês,
     tornando a aprendizagem mais envolvente e divertida.
   </p>
 
-  <div *ngIf="!temaSelecionado()" class="temas-grid">
-    <button *ngFor="let tema of temas" class="tema-card" (click)="selecionarTema(tema)">
+  <div *ngIf="!temaSelecionado()" class="midias__temas-grid">
+    <button *ngFor="let tema of temas" class="midias__tema-card" (click)="selecionarTema(tema)">
       {{ tema }}
     </button>
   </div>
 
-  <div *ngIf="temaSelecionado()" class="videos-grid">
-    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
+  <div *ngIf="temaSelecionado()" class="midias__videos-grid">
+    <button class="midias__btn-voltar" (click)="voltar()">← Voltar</button>
 
-    <h3>{{ temaSelecionado() }}</h3>
+    <h3 class="midias__video-section-title">{{ temaSelecionado() }}</h3>
 
-    <div *ngFor="let video of videosFiltrados" class="video-card">
+    <div *ngFor="let video of videosFiltrados" class="midias__video-card">
       <iframe [src]="video.url | safe" title="{{ video.titulo }}" frameborder="0" allowfullscreen></iframe>
-      <h4>{{ video.titulo }}</h4>
-      <p>{{ video.descricao }}</p>
+      <h4 class="midias__video-card-title">{{ video.titulo }}</h4>
+      <p class="midias__video-card-description">{{ video.descricao }}</p>
     </div>
   </div>
 </section>

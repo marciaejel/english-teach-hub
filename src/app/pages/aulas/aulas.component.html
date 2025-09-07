@@ -1,46 +1,54 @@
-<section class="aulas-section" aria-labelledby="aulas">
-  <header class="aulas-header">
-    <h1 class="section-title">📚 Aulas</h1>
-    <p class="section-subtitle">Planejar uma boa aula faz muita diferença na vida do professor que deseja o melhor resultado para o seu aluno</p>
+<section class="aulas" aria-labelledby="aulas">
+  <header class="aulas__header">
+    <h1 class="aulas__title">📚 Aulas</h1>
+    <p class="aulas__subtitle">
+      Planejar uma boa aula faz muita diferença na vida do professor que deseja o melhor resultado para o seu aluno
+    </p>
   </header>
 
-  <div class="filter-bar">
-    <label for="serie">Filtrar por série:</label>
-    <select id="serie" [(ngModel)]="serieSelecionada" (change)="filtrarAulas()">
+  <div class="aulas__filter">
+    <label for="serie" class="aulas__filter-label">Filtrar por série:</label>
+    <select id="serie" class="aulas__filter-select" [(ngModel)]="serieSelecionada" (change)="filtrarAulas()">
       <option value="">Todas</option>
       <option *ngFor="let serie of series" [value]="serie">{{ serie }}</option>
     </select>
   </div>
 
-  <div class="cards-wrapper">
-    <div class="cards-grid" [@cardAnim]>
-      <div *ngFor="let bloco of aulasFiltradas" class="card">
-        <h3 class="serie-title">{{ bloco.serie }}</h3>
+  <div class="aulas__cards-wrapper">
+    <div class="aulas__cards-grid" [@cardAnim]>
+      <div *ngFor="let bloco of aulasFiltradas" class="aulas__card">
+        <h3 class="aulas__serie-title">{{ bloco.serie }}</h3>
 
-        <div class="habilidades">
-          <div *ngFor="let hab of bloco.habilidades" class="habilidade-card">
-            <h4 (click)="toggleHabilidade(hab)" [class.expanded]="isExpanded(hab)">
+        <div class="aulas__habilidades">
+          <div *ngFor="let hab of bloco.habilidades" class="aulas__habilidade-card">
+            <h4 
+              (click)="toggleHabilidade(hab)" 
+              [class.aulas__habilidade-expanded]="isExpanded(hab)"
+              class="aulas__habilidade-title"
+            >
               {{ hab.code }}
             </h4>
-            <p *ngIf="isExpanded(hab)">{{ hab.desc }}</p>
 
-            <details *ngIf="isExpanded(hab) && hab.atividades.length">
-              <summary>Atividades</summary>
-              <ul>
-                <li *ngFor="let act of hab.atividades">{{ act }}</li>
+            <p *ngIf="isExpanded(hab)" class="aulas__habilidade-desc">{{ hab.desc }}</p>
+
+            <details *ngIf="isExpanded(hab) && hab.atividades.length" class="aulas__atividades">
+              <summary class="aulas__atividades-title">Atividades</summary>
+              <ul class="aulas__atividades-list">
+                <li *ngFor="let act of hab.atividades" class="aulas__atividade-item">{{ act }}</li>
               </ul>
             </details>
 
-            <div *ngIf="isExpanded(hab) && hab.exercicios?.length">
-              <h5>Exercícios</h5>
-              <ul>
-                <li *ngFor="let ex of hab.exercicios">
-                  <a [href]="ex.downloadUrl" target="_blank" rel="noopener noreferrer">
+            <div *ngIf="isExpanded(hab) && hab.exercicios?.length" class="aulas__exercicios">
+              <h5 class="aulas__exercicios-title">Exercícios</h5>
+              <ul class="aulas__exercicios-list">
+                <li *ngFor="let ex of hab.exercicios" class="aulas__exercicio-item">
+                  <a [href]="ex.downloadUrl" target="_blank" rel="noopener noreferrer" class="aulas__exercicio-link">
                     {{ ex.title }}
                   </a>
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
       </div>
