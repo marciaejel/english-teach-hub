@@ -100,10 +100,10 @@ O **EnglishTeachHub** integra uma API pública de dicionário para fornecer defi
 
 ### Endpoint utilizado
 
-GET https://api.dictionaryapi.dev/api/v2/entries/en/<palavra>
+GET https://api.dictionaryapi.dev/api/v2/entries/en/{palavra}
 
 
-- `<palavra>`: palavra em inglês que o usuário deseja consultar.
+- `{palavra}`: palavra em inglês que o usuário deseja consultar.
 
 ### Funcionamento
 
@@ -127,11 +127,12 @@ GET https://api.dictionaryapi.dev/api/v2/entries/en/<palavra>
     ]
   }
 ]
+```
 
 Caso ocorra algum erro (palavra não encontrada ou problema de rede), o sistema exibe uma mensagem de alerta ao usuário.
 
 💡 Observação: a API retorna significados da palavra em inglês, e não traduções para o português.
-```
+
 ---
 
 ## 🧪 Testes e Qualidade de Código
