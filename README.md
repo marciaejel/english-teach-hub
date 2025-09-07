@@ -5,13 +5,13 @@ O projeto tem como propósito **inovar na prática docente**, unindo tecnologia 
 
 ---
 
-## 🚀 Tecnologias utilizadas
-
 * **Angular 17** (standalone components, signals, RxJS)
 * **TypeScript**
 * **HTML5 & SCSS** (CSS moderno e responsivo, seguindo metodologia BEM)
 * **Git & GitHub** para versionamento
 * **Boas práticas de UX/UI**
+* **Consumo de API pública de dicionário**: a aplicação busca definições de palavras em inglês em tempo real
+* **Jest** para testes unitários e cobertura mínima de 50%, garantindo confiabilidade e manutenção do código
 
 ---
 
@@ -73,7 +73,7 @@ No **EnglishTeachHub**, adotamos o padrão **BEM (Block, Element, Modifier)** pa
 EnglishTeachHub/
 ├─ src/
 │  ├─ app/
-│  │  ├─ layout/ (componentes de layout)
+│  │  ├─ layout/
 │  │  ├─ pages/
 │  │  │  ├─ aula/
 │  │  │  ├─ curiosidades/
@@ -81,17 +81,74 @@ EnglishTeachHub/
 │  │  │  ├─ hero/
 │  │  │  ├─ midias/
 │  │  │  ├─ tradutor/
-│  │  ├─ shared/ (componentes e utilitários reutilizáveis)
+│  │  ├─ shared/
 │  │  ├─ pipe/
-│  │  ├─ app.component.ts/html/scss
 │  │  ├─ utils/
 │  │  ├─ data-mock/
+│  │  ├─ app.component.ts/html/scss/spec.ts
 │  └─ assets/
 │     └─ imagens/
-└─ package.json
+├─ package.json
+├─ jest.config.js
+└─ README.md
+
 ```
 
-> 🔹 A estrutura reflete a organização por **blocos BEM**: cada componente tem seu próprio bloco CSS/SCSS, facilitando manutenção e escalabilidade.
+## 🌐 Consumo da API de Tradução
+
+O **EnglishTeachHub** integra uma API pública de dicionário para fornecer definições em inglês em tempo real.  
+
+### Endpoint utilizado
+
+GET https://api.dictionaryapi.dev/api/v2/entries/en/<palavra>
+
+
+- `<palavra>`: palavra em inglês que o usuário deseja consultar.
+
+### Funcionamento
+
+1. O usuário digita a palavra no campo de input.
+2. Ao clicar em **"Traduzir"**, o Angular faz uma requisição HTTP GET para o endpoint da API.
+3. A API retorna um JSON com informações da palavra, incluindo significados (definitions) e partes do discurso (partOfSpeech).
+4. O componente exibe a primeira definição encontrada no resultado.  
+   - Exemplo: ao consultar `love`, a resposta pode ser:
+
+```json
+[
+  {
+    "word": "love",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          { "definition": "strong affection" }
+        ]
+      }
+    ]
+  }
+]
+
+Caso ocorra algum erro (palavra não encontrada ou problema de rede), o sistema exibe uma mensagem de alerta ao usuário.
+
+💡 Observação: a API retorna significados da palavra em inglês, e não traduções para o português.
+```
+---
+
+## 🧪 Testes e Qualidade de Código
+
+O projeto utiliza **Jest** para testes unitários, integrados a cada componente.  
+
+### Scripts disponíveis:
+
+* `npm run test` → executa todos os testes uma vez  
+* `npm run test:watch` → executa os testes em modo watch (atualiza conforme alterações no código)  
+* `npm run test:cov` → gera relatório de cobertura na pasta `coverage/`  
+
+💡 A meta de cobertura mínima é de **50% do código**, garantindo que funcionalidades principais sejam testadas e funcionando corretamente.  
+
+### Estrutura de testes
+
+Cada componente possui seu próprio arquivo `.spec.ts` na mesma pasta do `.ts`, `.html` e `.scss`:
 
 ---
 
