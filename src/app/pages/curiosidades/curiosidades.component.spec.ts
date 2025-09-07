@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CuriosidadesComponent } from './curiosidades.component';
+import { CuriosidadesModalComponent } from './modal/curiosidades-modal.component';
+import { curiosities } from '../../../utils/curiosidades.utils';
+
 
 describe('CuriosidadesComponent', () => {
   let component: CuriosidadesComponent;
@@ -8,16 +10,35 @@ describe('CuriosidadesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CuriosidadesComponent]
-    })
-    .compileComponents();
-    
+      imports: [CuriosidadesComponent, CuriosidadesModalComponent]
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CuriosidadesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize curiosidades array', () => {
+    expect(component.curiosidades).toEqual(curiosities);
+  });
+
+  it('should select a random curiosidade on showMore', () => {
+    component.showMore();
+    const valor = component.curiosidadeAtual();
+    expect(curiosities).toContain(valor);
+  });
+
+  it('should open the modal', () => {
+    component.abrirModal();
+    expect(component.modalAberto()).toBe(true);
+  });
+
+  it('should close the modal', () => {
+    component.fecharModal();
+    expect(component.modalAberto()).toBe(false);
   });
 });

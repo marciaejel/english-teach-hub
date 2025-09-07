@@ -4,20 +4,19 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('deve ser criado com sucesso', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it(`deve ter o título 'english-teach-hub'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, english-teach-hub');
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('english-teach-hub');
   });
 });
