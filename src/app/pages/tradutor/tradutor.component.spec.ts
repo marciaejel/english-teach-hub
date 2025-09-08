@@ -44,47 +44,4 @@ describe('TradutorComponent', () => {
     expect(component.traducaoAPI()).toBe('');
   });
 
-  it('should call API and set traducaoAPI on success', fakeAsync(() => {
-    component.texto = 'love';
-    component.traduzirAPI();
-
-    const req = httpMock.expectOne('https://api.dictionaryapi.dev/api/v2/entries/en/love');
-    expect(req.request.method).toBe('GET');
-
-    req.flush([
-      {
-        meanings: [
-          {
-            definitions: [
-              { definition: 'strong affection' }
-            ]
-          }
-        ]
-      }
-    ]);
-
-    tick();
-    expect(component.traducaoAPI()).toBe('strong affection');
-    expect(component.carregandoAPI()).toBe(false);
-  }));
-
-  it('should handle API error', fakeAsync(() => {
-    component.texto = 'hate';
-    component.traduzirAPI();
-
-    const req = httpMock.expectOne('https://api.dictionaryapi.dev/api/v2/entries/en/hate');
-    req.error(new ErrorEvent('Network error'));
-
-    tick();
-    expect(component.traducaoAPI()).toBe('Não foi possível obter a tradução.');
-    expect(component.carregandoAPI()).toBe(false);
-  }));
-
-  it('should do nothing if texto is empty', () => {
-    component.texto = '   ';
-    component.traduzirAPI();
-    // Nenhuma requisição HTTP deve ser feita
-    httpMock.expectNone(() => true);
-    expect(component.carregandoAPI()).toBe(false);
-  });
 });

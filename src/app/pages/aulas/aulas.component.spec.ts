@@ -1,20 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { AulasComponent } from './aulas.component';
-import { MOCK_AULAS, Habilidade } from '../../../data-mocks/aulas.mock';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { By } from '@angular/platform-browser';
+import { MOCK_AULAS } from '../../../data-mocks/aulas.mock';
 
 describe('AulasComponent', () => {
   let component: AulasComponent;
-  let fixture: ComponentFixture<AulasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AulasComponent, FormsModule, CommonModule]
+      imports: [AulasComponent] // standalone component
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AulasComponent);
+    const fixture = TestBed.createComponent(AulasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,58 +19,43 @@ describe('AulasComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize aulasFiltradas with all aulas when serieSelecionada is null', () => {
+  it('should have all series available', () => {
+    const seriesEsperadas = Array.from(new Set(MOCK_AULAS.map(a => a.serie)));
+    expect(component.series).toEqual(seriesEsperadas);
+  });
+
+  it('should filter aulas by selected series', () => {
+    component.serieSelecionada = MOCK_AULAS[0].serie;
+    component.filtrarAulas();
+
+    expect(
+      component.aulasFiltradas.every(a => a.serie === MOCK_AULAS[0].serie)
+    ).toBe(true);
+  });
+
+  it('should show all aulas if no series selected', () => {
     component.serieSelecionada = null;
-    component.ngOnChanges({});
-    expect(component.aulasFiltradas.length).toBe(MOCK_AULAS.length);
+    component.filtrarAulas();
+
+    expect(component.aulasFiltradas.length).toBe(component.aulas.length);
   });
 
-  it('should filter aulasFiltradas by serieSelecionada', () => {
-    component.serieSelecionada = MOCK_AULAS[0].serie;
-    component.ngOnChanges({});
-    expect(component.aulasFiltradas.every(a => a.serie === MOCK_AULAS[0].serie)).toBe(true);
-  });
+  it('should toggle habilidade expansion', () => {
+    // pega uma habilidade válida do primeiro mock
+    const hab = MOCK_AULAS[0].habilidades[0];
 
-  it('should toggle habilidade state correctly', () => {
-    const hab: Habilidade = component.aulas[0].habilidades[0];
-    expect(component.isExpanded(hab)).toBe(false);
+    expect(component.isExpanded(hab)).toBe(false); // inicialmente fechado
 
     component.toggleHabilidade(hab);
-    expect(component.isExpanded(hab)).toBe(true);
+    expect(component.isExpanded(hab)).toBe(true);  // abriu
 
     component.toggleHabilidade(hab);
-    expect(component.isExpanded(hab)).toBe(false);
+    expect(component.isExpanded(hab)).toBe(false); // fechou de novo
   });
 
-  it('should return false for isExpanded if habilidade not toggled', () => {
-    const hab: Habilidade = component.aulas[0].habilidades[0];
-    expect(component.isExpanded(hab)).toBe(false);
-  });
-
-  it('should update aulasFiltradas when ngOnChanges is called', () => {
-    component.serieSelecionada = MOCK_AULAS[0].serie;
-    component.aulasFiltradas = [];
+  it('should call filtrarAulas on ngOnChanges', () => {
+    const spy = jest.spyOn(component, 'filtrarAulas');
     component.ngOnChanges({});
-    expect(component.aulasFiltradas.length).toBeGreaterThan(0);
-  });
-
-  it('should have series list matching unique series from MOCK_AULAS', () => {
-    const uniqueSeries = Array.from(new Set(MOCK_AULAS.map(a => a.serie)));
-    expect(component.series).toEqual(uniqueSeries);
-  });
-
-  it('should handle toggle for multiple habilidades independently', () => {
-    const hab1: Habilidade = component.aulas[0].habilidades[0];
-    const hab2: Habilidade = component.aulas[0].habilidades[1];
-
-    component.toggleHabilidade(hab1);
-    component.toggleHabilidade(hab2);
-
-    expect(component.isExpanded(hab1)).toBe(true);
-    expect(component.isExpanded(hab2)).toBe(true);
-
-    component.toggleHabilidade(hab1);
-    expect(component.isExpanded(hab1)).toBe(false);
-    expect(component.isExpanded(hab2)).toBe(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

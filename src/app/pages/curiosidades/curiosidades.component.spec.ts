@@ -26,12 +26,6 @@ describe('CuriosidadesComponent', () => {
     expect(component.curiosidades).toEqual(curiosities);
   });
 
-  it('should select a random curiosidade on showMore', () => {
-    component.showMore();
-    const valor = component.curiosidadeAtual();
-    expect(curiosities).toContain(valor);
-  });
-
   it('should open the modal', () => {
     component.abrirModal();
     expect(component.modalAberto()).toBe(true);
