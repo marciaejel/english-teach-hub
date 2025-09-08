@@ -175,7 +175,6 @@ Abra [http://localhost:4200](http://localhost:4200) no navegador para visualizar
 
 ---
 
-
 ## 📌 Contatos
 
 * GitHub: [https://github.com/marciaejel](https://github.com/marciaejel)
